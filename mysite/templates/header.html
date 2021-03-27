@@ -1,0 +1,95 @@
+<!-- 引入notifications的模板标签 -->
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}	
+<!-- 定义导航栏 -->
+<nav class="navbar  navbar-expand-lg navbar-light bg-light">
+	<div class="container">
+		<!-- 导航栏商标 -->
+		<a class="navbar-brand" href="#">
+			<img src="/static/image/site.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+			GuiHuaXin</a>	
+		<!-- 导航入口 -->
+		<div>
+			<ul class="nav navbar-nav ">
+				<!-- 条目 -->
+				<form class="form-inline">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'learn:home' %}">
+						<i class="bi bi-house"></i> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/admin/">
+						Admin</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="bi bi-info-circle"></i> About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'iot:index' %}">
+						<i class="bi bi-slash-square"></i> Iot</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/download/static/image/site.jpg" download="site.jpg">
+						<i class="bi bi-download"></i> Download</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'article:article_list' %}">
+						<i class="bi bi-book"></i> Article</a>
+				</li>
+		
+				<form class="form-inline">
+					<button class="btn btn-outline-success" type="button">Main button</button>
+				</form>
+				<!-- Django的 if 模板语句 -->
+				{% if user.is_authenticated %}
+					<!-- 如果用户已经登录，则显示用户名下拉框 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<!-- 新增代码，小红点 -->
+							{% if unread_count %}
+								<svg viewBox="0 0 8 8"
+									 width="8px"
+									 height="8px">
+									<circle cx="4"
+											cy="4"
+											r="4"
+											fill="#ff6b6b"
+											></circle>
+								</svg>
+							{% endif %}
+							{{ user.username }}
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<!-- 新增代码，通知计数 -->
+							<a class="dropdown-item" href="{% url 'notice:list' %}">
+								<i class="bi bi-bell"></i> Notice
+								{% if unread_count %}
+								<span class="badge badge-danger">{{ unread_count }}</span>
+								{% endif %}
+							</a>
+							<a class="dropdown-item" href="{% url 'userprofile:edit' user.id %}">
+								<i class="bi bi-person-check"></i> User Info</a>
+							<a class="dropdown-item" href="{% url 'article:article_create' %}">
+								<i class="bi bi-pencil"></i> Write Article</a>
+							<a class="dropdown-item" href="{% url 'userprofile:logout' %}">
+								<i class="bi bi-box-arrow-right"></i> Logout</a>
+						</div>
+					</li>
+				<!-- 如果用户未登录，则显示 “登录” -->
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'userprofile:login' %}">LOGIN</a>
+					</li>                    
+				<!-- if 语句在这里结束 -->
+				{% endif %}
+			</ul>
+		</div>
+
+	</div>
+</nav>
+
+

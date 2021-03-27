@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} 用户信息 {% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <div class="col-md-4">
+				<i class="bi bi-person-circle"></i> 用户名: {{ user.username }}</div>
+			<br>
+            {% if profile.avatar %}	
+				<div class="col-md-4"><i class="bi bi-aspect-ratio"></i> 头像</div>
+				<img src="{{ profile.avatar.url }}" style="max-width: 20%; border-radius: 15%;" class="col-md-4">
+			{% else %}
+				<h5 class="col-md-4">暂无头像</h5>
+			{% endif %}
+			<br>
+			<br>
+			<!-- 表单必须设置enctype="multipart/form-data"属性，才能够正确上传图片等文件。 -->
+            <form method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+				<!-- avatar -->
+				<div class="form-group">
+					<label for="avatar">上传头像</label>
+					<input type="file" class="form-control-file" name="avatar" id="avatar">
+				</div>
+                <!-- phone -->
+                <div class="form-group col-md-4">
+					<i class="bi bi-telephone"></i>
+                    <label for="phone"> 电话</label>
+                    <input type="text" class="form-control" id="phone" name="phone" value="{{ profile.phone }}">
+                </div>
+                <!-- bio -->
+                <div class="form-group col-md-4">
+					<i class="bi bi-stickies"></i>
+                    <label for="bio"> 简介</label>
+                    <textarea type="text" class="form-control" id="bio" name="bio" rows="12">{{ profile.bio }}</textarea>
+                </div>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary">
+					<i class="bi bi-arrow-up-circle"></i> 提交</button>
+            </form>
+			<br>
+			<!-- 删除用户 -->
+			<div class="alert alert-danger" role="alert">
+				<a href="#" class="btn btn-primary" onclick="user_delete()">
+					<i class="bi bi-person-dash"></i> Delete User</a>
+				Give it a click if you like. But This Is A Danger Select!!! 
+			</div>
+			{% if user.is_authenticated %}
+			<form 
+				style="display:none;" 
+				id="user_delete"
+				action="{% url 'userprofile:delete' user.id %}" 
+				method="POST"
+			>
+			{% csrf_token %}
+				<button type="submit">发送</button>
+			</form>
+			<script>
+				function user_delete() {
+					// 调用layer弹窗组件
+					layer.open({
+						title: "确认删除",
+						content: "确认删除用户资料吗？",
+						yes: function(index, layero) {
+							$('form#user_delete button').click();
+							layer.close(index);
+						},
+					})
+				}
+			</script>
+			{% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
