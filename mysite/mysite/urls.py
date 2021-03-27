@@ -38,6 +38,7 @@ urlpatterns = [
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
     # 密码重置
     path('password-reset/', include('password_reset.urls')),
+    # 文件下载
     path('download/<path:path>/',learn_views.downloadfile, name="download"),
     # 消息通知
     path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
