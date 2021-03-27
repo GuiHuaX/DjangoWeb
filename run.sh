@@ -3,8 +3,10 @@ echo "running! 脚本执行中，请稍后..."
 
 git clone git@gitee.com:Tangkz/tang-long.git
 
-mv tang-long mysite
+mv tang-long Django_project
 
+cd ./Django_project/
+ls -al
 sudo chmod -R 644 mysite
 sudo find mysite -type d | xargs chmod 755
 
