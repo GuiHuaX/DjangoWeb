@@ -7,29 +7,34 @@
             <br>
             <form method="post" action=".">
                 {% csrf_token %}
-                <!-- 账号 -->
-                <div class="form-group col-md-4">
-                    <label for="username">昵称</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
-                </div>
-                <!-- 邮箱 -->
-                <div class="form-group col-md-4">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email">
-                </div>
-                <!-- 密码 -->
-                <div class="form-group col-md-4">
-                    <label for="password">设置密码</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <!-- 确认密码 -->
-                <div class="form-group col-md-4">
-                    <label for="password2">确认密码</label>
-                    <input type="password" class="form-control" id="password2" name="password2" required>
-                </div>
-                <!-- 提交按钮 -->
-                <button type="submit" class="btn btn-primary">提交</button>
+				<h2 class="form__title">注册账号</h2>
+				<!-- 账号 -->
+				<div class="form-group col-md-4">
+					<label for="username">账号</label>
+					<input type="text" placeholder="User" class="form-control" id="username" name="username" required />
+				</div>
+				<!-- 邮箱 -->
+				<div class="form-group col-md-4">
+					<label for="email">邮箱</label>
+					<input type="email" placeholder="Email" class="form-control" id="email" name="email" />
+				</div>
+				<!-- 密码 -->
+				<div class="form-group col-md-4">
+					<label for="password">设置密码</label>
+					<input type="password" placeholder="Password" class="form-control" id="password" name="password" required />
+				</div>
+				<!-- 确认密码 -->
+				<div class="form-group col-md-4">
+					<label for="password2">确认密码</label>
+					<input type="password" placeholder="Password" class="form-control" id="password2" name="password2" required />
+				</div>
+				<!-- 提交按钮 -->
+				<div class="form-group col-md-4">
+					<button type="submit" class="btn btn-outline-success">点击注册</button>					
+				</div>				
             </form>
+			
+			<h5><a href='{% url "userprofile:login" %}'>已有账号，直接登录</a></h5>
         </div>
     </div>
 </div>
