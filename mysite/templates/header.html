@@ -17,24 +17,20 @@
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
 				<li class="nav-item">
-					<a class="nav-link" href="{% url 'learn:home' %}">
-						<i class="bi bi-house"></i> Home</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="/admin/">
 						Admin</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">
-						<i class="bi bi-info-circle"></i> About</a>
+					<a class="nav-link" href="{% url 'learn:home' %}">
+						<i class="bi bi-house"></i> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'learn:info' %}">
+						<i class="bi bi-info-circle"></i> Info</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'iot:index' %}">
 						<i class="bi bi-slash-square"></i> Iot</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/download/static/image/site.jpg" download="site.jpg">
-						<i class="bi bi-download"></i> Download</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'article:article_list' %}">
@@ -81,7 +77,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{% url 'userprofile:login' %}">Login</a>
 					</li> 
-					<a href='{% url "userprofile:register" %}' class="btn btn-outline-success" type="button">Register</a>					
+					<li class="nav-item">
+						<a class="btn btn-outline-success" href='{% url "userprofile:register" %}'>Register</a>	
+					</li>
 				<!-- if 语句在这里结束 -->
 				{% endif %}
 			</ul>

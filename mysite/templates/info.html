@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- 网站主语言 -->
+<html lang="zh-cn">
+
+<head>
+    <!-- 网站采用的字符编码 -->
+    <meta charset="utf-8">
+    <!-- 预留网站标题的位置 -->
+    <title>About us</title>
+    <!-- 引入bootstrap的css文件 -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+	<!-- 引入monikai.css -->
+    <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">
+	<!-- 引入矢量图标 -->
+	<link rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+<!-- 定义导航栏 -->
+<nav class="navbar navbar-light bg-light">
+	<div class="container">
+		<!-- 导航栏商标 -->
+		<a class="navbar-brand" href="#">GuiHuaXin</a>
+		<!-- 导航入口 -->
+		<div>
+			<ul class="nav navbar-nav ">				
+				<!-- 条目 -->
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'learn:home' %}">
+						<i class="bi bi-house"></i> Home</a>
+				</li>
+			<ul>
+		</div>
+	</div>		
+</nav>			
+	
+<!-- 新增两个 div 容器,预留具体页面的位置 -->
+<div id="wrapper">
+	<div class="alert alert-success" role="alert">
+	<br>
+	<ul class="nav">
+		<li class="nav-item">
+			<a class="nav-link" href="/download/static/image/site.jpg" download="site.jpg">
+				<i class="bi bi-download"></i> Download</a>
+		</li>
+	</ul>
+	
+	<h3> 关于 </h3>
+	<p>基于python语言	
+	后端：Django	
+	前端：Vue/Bootstrap	
+	服务器：Raspberry(Linux/Apache2)</p>
+	
+	<p>gitee仓库：<a href="https://gitee.com/Tangkz/tang-long">
+		https://gitee.com/Tangkz/tang-long</a></p>
+	<p>github仓库：<a href="https://github.com/guihuaxin">
+		https://github.com/guihuaxin</a></p>
+	<hr>
+	
+	<h3> 参考 </h3>
+	<p>内网穿透：
+		<a href="https://natapp.cn/#download">
+		https://natapp.cn/#download</a>
+	</p>
+	<p>刘江的博客教程:
+		<a href="https://www.liujiangblog.com/course/django/">
+		https://www.liujiangblog.com/course/django/</a>
+	</p>
+	<p>自强学堂：
+		<a href="https://code.ziqiangxuetang.com/django/django-tutorial.html">
+		https://code.ziqiangxuetang.com/django/django-tutorial.html</a>
+	</p>
+	<p>Django分页模块: 
+		<a href="https://docs.djangoproject.com/zh-hans/2.1/topics/pagination/">
+		https://docs.djangoproject.com/zh-hans/2.1/topics/pagination/</a>
+	</p>
+	<p>Django验证系统重置密码: 
+		<a href="https://docs.djangoproject.com/zh-hans/2.1/topics/auth/default/">
+		https://docs.djangoproject.com/zh-hans/2.1/topics/auth/default/</a>
+	<p>Bootstrap：
+		<a href="https://www.bootcss.com/">
+		https://www.bootcss.com/</a>
+	</p>
+	<p>轻量级的标记语言Markdown：
+		<a href="https://help.coding.net/">
+		https://help.coding.net/</a>
+	</p>
+	<p>Layer弹窗组件：
+		<a href="https://layer.layui.com/">
+		https://layer.layui.com/</a>
+	</p>
+	<p>矢量图标库：
+		<a href="https://fontawesome.com/">
+		https://fontawesome.com/</a>
+	</p>
+	<p>返回顶部按钮：
+		鹦鹉 back_to_top_func
+		<a href="https://ezbox.idv.tw/131/back-to-top-button-without-images">
+		https://ezbox.idv.tw/131/back-to-top-button-without-images</a>
+	</p>
+	<p>Django项目移植到Apache2/nginx:
+		<a href="https://code.ziqiangxuetang.com/django/django-deploy.html">
+		https://code.ziqiangxuetang.com/django/django-deploy.html</a>
+	</p>
+	
+	</div>
+	<div id="push"></div>
+</div>
+	
+	
+    <!-- 引入注脚 -->
+    {% include 'footer.html' %}
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- 引入layer.js 弹窗 -->
+    <script src="{% static 'layer/layer.js' %}"></script>
+	<!-- 在jquery后面引入 -->
+    {% include 'back_to_top_func.html' %}
+	
+	<!-- 增加样式 -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            min-height: 100%;
+            margin-bottom: -60px;
+        }
+
+        #footer,
+        #push {
+            height: 60px;
+        }
+    </style>
+</body>
+
+</html>

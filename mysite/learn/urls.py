@@ -11,5 +11,5 @@ app_name = 'learn'
 
 urlpatterns = [
     path('home/', views.index, name='home'),
-    
+    path('info/', views.info, name='info'),
 ]

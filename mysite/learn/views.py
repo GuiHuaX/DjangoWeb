@@ -16,9 +16,16 @@ from django.conf import settings
 def index(request):
     context = { 
        
-        }
+    }
     # render函数：载入模板，并返回context对象
     return render(request, 'home.html', context)
+
+
+def info(request):
+    context = {
+    
+    }
+    return render(request, 'info.html', context)
 
 
 def downloadfile(request,path):

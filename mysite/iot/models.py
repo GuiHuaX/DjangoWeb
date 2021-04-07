@@ -6,7 +6,7 @@ from django.db import models
 from django.utils import timezone
 
 
-# 温度数据模型
+# 数据模型
 class RaspberryPi(models.Model):
     temperature = models.FloatField()
     weight = models.FloatField()
@@ -24,6 +24,10 @@ class RaspberryPi(models.Model):
     # 函数 __str__ 定义当调用对象的 str() 方法时的返回值内容
     def __str__(self):
         return self.title
+
+
+
+
 
 
 class Book(models.Model):

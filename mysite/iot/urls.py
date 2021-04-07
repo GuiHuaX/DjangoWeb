@@ -1,4 +1,4 @@
-
+# -*- coding:utf-8 -*-
 # iot/urls.py
 
 # 引入path
